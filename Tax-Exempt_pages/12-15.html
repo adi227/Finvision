@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Sign In</title>
+	<link rel="stylesheet" href="public/style.css">
+</head>
+<style>
+    #content{
+        margin: 20px 0;
+        font-size: 25px;
+    }
+</style>
+<body>
+	<div class="box">
+      <div class="container">
+        <h1>Taxable income between Rs. 12 lakhs to Rs. 15 lakhs	<h1>
+      <ul>
+        <li id="content"></li>
+      </ul>
+      </div>
+      <script>
+        // Replace "YOUR_PUBLIC_TOKEN" with your actual public token
+        const storyblokToken = "oIZVuhN8y1IuYXIQOILrOAtt";
+    
+        // Define the API endpoint URL
+        const apiUrl = `https://api.storyblok.com/v2/cdn/stories/landing-page5?token=${storyblokToken}&version=draft&cv=1596452939`;
+    
+        // Make a GET request to the API
+        fetch(apiUrl)
+          .then(response => response.json())
+          .then(data => {
+            console.log(data);
+            //Get the first story from the API response
+            const story = data.story
+    
+            // Render the story content in the HTML
+            document.getElementById("content").innerHTML = story.content.Description;
+            story.content.Image.filename
+          });
+      </script>
+	</div>
+</body>
+</html>
